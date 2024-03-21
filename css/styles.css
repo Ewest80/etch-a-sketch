@@ -10,6 +10,8 @@
   --primary-dark: #333;
   --primary-light: #EDEADE;
   --secondary-light: #fff;
+
+  --grid-size: 16;
 }
 
 body {
@@ -56,6 +58,8 @@ header h1 {
 
 .grid .grid-item {
   background-color: var(--secondary-light);
+  flex: 1 0 calc(100% / var(--grid-size));
+  height: calc(100% / var(--grid-size));
 }
 
 /* Container */
