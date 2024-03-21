@@ -27,6 +27,7 @@ function createGrid(gridSize) {
     for (let i = 0; i < gridSize * gridSize; i++) {
         const gridItem = document.createElement('div');
         gridItem.classList.add('grid-item');
+        gridItem.dataset.opacity = 0.1;
 
         gridItem.addEventListener('mouseover', changeColorMode);
         gridItem.addEventListener('mousedown', changeColorMode);
@@ -50,6 +51,14 @@ function changeColorMode(event) {
     }
     else if (colorMode === RAINBOW) {
         event.target.style.backgroundColor = getRandomColor();
+    }
+    else if (colorMode === SHADE) {
+        let opacity = parseFloat(event.target.dataset.opacity);
+        if (opacity < 1) {
+            opacity += 0.1;
+            event.target.dataset.opacity = opacity.toString();
+        }
+        event.target.style.backgroundColor = `rgba(51, 51, 51, ${opacity})`;
     }
     else if (colorMode === ERASER) {
         event.target.style.backgroundColor = '';
@@ -85,7 +94,11 @@ resizeButton.addEventListener('click', () => {
 });
 
 clearButton.addEventListener('click', () => {
-    gridItems.forEach(item => item.style.backgroundColor = '');
+    gridItems.forEach(item => {
+        item.style.backgroundColor = '';
+        item.dataset.opacity = 0.1;
+    });
+
 });
 
 borderButton.addEventListener('click', () => {
