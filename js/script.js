@@ -1,4 +1,5 @@
 const gridContainer = document.querySelector('.grid-container');
+const clearButton = document.querySelector('#clearBtn');
 
 let gridSize = 24;
 let color = '#333';
@@ -41,5 +42,6 @@ document.addEventListener('mousedown', (event) => {
 });
 document.addEventListener('mouseup', () => mouseDown = false);
 
+clearButton.addEventListener('click', () => createGrid(gridSize));
 
 createGrid(gridSize);
