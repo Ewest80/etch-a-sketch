@@ -1,7 +1,7 @@
 const gridContainer = document.querySelector('.grid-container');
 const resizeButton = document.querySelector('#resizeBtn');
 const clearButton = document.querySelector('#clearBtn');
-const drawToolsButtons = document.querySelectorAll('.draw-tools btn');
+const drawToolsButtons = document.querySelectorAll('.draw-tools .btn');
 
 let gridSize = 24;
 let color = '#333';
@@ -36,6 +36,16 @@ function changeColorMode(event) {
     if (colorMode === 'COLOR') {
         event.target.style.backgroundColor = color;
     }
+    else if (colorMode === 'RAINBOW') {
+        event.target.style.backgroundColor = getRandomColor();
+    }
+}
+
+function getRandomColor() {
+    const red = Math.floor(Math.random() * 256);
+    const green = Math.floor(Math.random() * 256);
+    const blue = Math.floor(Math.random() * 256);
+    return `rgb(${red}, ${green}, ${blue})`;
 }
 
 document.addEventListener('mousedown', (event) => {
@@ -55,5 +65,24 @@ resizeButton.addEventListener('click', () => {
     createGrid(gridSize);
 });
 clearButton.addEventListener('click', () => createGrid(gridSize));
+
+drawToolsButtons.forEach(button => {
+    button.addEventListener('click', (event) => {
+        switch (event.target.id) {
+            case 'colorBtn':
+                colorMode = 'COLOR';
+                break;
+            case 'rainbowBtn':
+                colorMode = 'RAINBOW';
+                break;
+            case 'shadeBtn':
+                colorMode = 'SHADE';
+                break;
+            case 'eraserBtn':
+                colorMode = 'ERASER';
+                break;
+        }
+    })
+});
 
 createGrid(gridSize);
