@@ -71,11 +71,15 @@ document.addEventListener('mousedown', (event) => {
 document.addEventListener('mouseup', () => mouseDown = false);
 
 resizeButton.addEventListener('click', () => {
-    let newGridSize = +prompt('Enter a new grid size (1-100):', gridSize.toString());
-    if (!Number.isInteger(newGridSize) || newGridSize < 1 || newGridSize > 100) {
+    let newGridSize = prompt('Enter a new grid size (1-100):', gridSize);
+
+    if (newGridSize === null) return;
+    if (!Number.isInteger(parseInt(newGridSize)) || newGridSize < 1 || newGridSize > 100) {
         alert('Please enter a number between 1 and 100');
         return;
     }
+    if (newGridSize === gridSize) return;
+
     gridSize = newGridSize;
     gridItems = createGrid(gridSize);
 });
