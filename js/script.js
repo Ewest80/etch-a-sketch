@@ -1,6 +1,7 @@
 const gridContainer = document.querySelector('.grid-container');
 const resizeButton = document.querySelector('#resizeBtn');
 const clearButton = document.querySelector('#clearBtn');
+const borderButton = document.querySelector('#borderBtn');
 const drawToolsButtons = document.querySelectorAll('.draw-tools .btn');
 
 let gridSize = 16;
@@ -68,6 +69,15 @@ resizeButton.addEventListener('click', () => {
     createGrid(gridSize);
 });
 clearButton.addEventListener('click', () => createGrid(gridSize));
+
+borderButton.addEventListener('click', () => {
+    const gridItems = document.querySelectorAll('.grid-item');
+    const gridContainer = document.querySelector('.grid-container');
+    gridItems.forEach(item => {
+        item.classList.toggle('grid-item-border');
+        gridContainer.classList.toggle('grid-container-border');
+    })
+})
 
 drawToolsButtons.forEach(button => {
     button.addEventListener('click', (event) => {
