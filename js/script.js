@@ -15,11 +15,14 @@ let color = '#333';
 let mouseDown = false;
 let colorMode = 'COLOR';
 
+let gridItems = createGrid(gridSize);
 
 function createGrid(gridSize) {
     // Clear grid and change css variable to new grid size
     clearGrid();
     document.documentElement.style.setProperty('--grid-size', gridSize);
+
+    const gridItems = [];
 
     for (let i = 0; i < gridSize * gridSize; i++) {
         const gridItem = document.createElement('div');
@@ -29,7 +32,10 @@ function createGrid(gridSize) {
         gridItem.addEventListener('mousedown', changeColorMode);
 
         gridContainer.appendChild(gridItem);
+        gridItems.push(gridItem);
     }
+
+    return gridItems;
 }
 
 function clearGrid() {
@@ -71,16 +77,14 @@ resizeButton.addEventListener('click', () => {
         return;
     }
     gridSize = newGridSize;
-    createGrid(gridSize);
+    gridItems = createGrid(gridSize);
 });
 
 clearButton.addEventListener('click', () => {
-    const gridItems = document.querySelectorAll('.grid-item');
     gridItems.forEach(item => item.style.backgroundColor = '');
 });
 
 borderButton.addEventListener('click', () => {
-    const gridItems = document.querySelectorAll('.grid-item');
     const gridContainer = document.querySelector('.grid-container');
     gridItems.forEach(item => {
         item.classList.toggle('grid-item-border');
@@ -106,5 +110,3 @@ drawToolsButtons.forEach(button => {
         }
     })
 });
-
-createGrid(gridSize);
