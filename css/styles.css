@@ -38,16 +38,20 @@ header h1 {
 
 /** Grid **/
 .grid {
-  width: 600px;
-  height: 600px;
+  max-width: 700px;
+  max-height: 700px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   margin: 0 auto;
 }
 
 .grid .grid-container {
   display: flex;
   flex-wrap: wrap;
-  align-items: flex-start;
   align-content: flex-start;
+  width: 600px;
+  height: 600px;
 }
 
 .grid .grid-item {
