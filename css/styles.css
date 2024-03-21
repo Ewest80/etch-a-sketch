@@ -62,9 +62,50 @@ header h1 {
   height: calc(100% / var(--grid-size));
 }
 
+/** Controls **/
+.controls {
+  margin-top: 32px;
+}
+
+.controls .container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 32px;
+}
+
+.controls .grid-tools,
+.controls .draw-tools {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  border: 1px solid var(--primary-dark);
+  border-radius: 10px;
+  padding: 16px;
+  gap: 16px;
+}
+
+.controls .btn {
+  border: none;
+  width: 100px;
+  height: 40px;
+  border-radius: 10px;
+  background-color: var(--primary-dark);
+  color: var(--secondary-light);
+  font-size: 18px;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.controls .btn:hover {
+  background-color: #444;
+}
+
+
 /* Container */
 .container {
-  max-width: 1200px;
+  max-width: 1000px;
   margin: 0 auto;
   padding: 0 20px;
 }
