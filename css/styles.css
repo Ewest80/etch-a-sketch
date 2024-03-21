@@ -35,7 +35,6 @@ header h1 {
   font-weight: 900;
 }
 
-
 /** Grid **/
 .grid {
   max-width: 700px;
@@ -52,10 +51,11 @@ header h1 {
   align-content: flex-start;
   width: 600px;
   height: 600px;
+  box-shadow: 0 0 5px 0 black;
 }
 
 .grid .grid-item {
-  background-color: var(--primary-dark);
+  background-color: var(--secondary-light);
 }
 
 /* Container */
