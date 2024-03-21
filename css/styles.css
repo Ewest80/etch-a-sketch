@@ -1,0 +1,63 @@
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+:root {
+  --primary-dark: #333;
+  --primary-light: #EDEADE;
+  --secondary-light: #fff;
+}
+
+body {
+  font-family: 'Roboto', sans-serif;
+  background-color: var(--primary-light);
+  color: var(--primary-dark);
+
+}
+
+/** Header **/
+header {
+  padding: 32px 0;
+}
+
+header .container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+header h1 {
+  font-size: 72px;
+  font-weight: 900;
+}
+
+
+/** Grid **/
+.grid {
+  width: 600px;
+  height: 600px;
+  margin: 0 auto;
+}
+
+.grid .grid-container {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-start;
+  align-content: flex-start;
+}
+
+.grid .grid-item {
+  background-color: var(--primary-dark);
+}
+
+/* Container */
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
