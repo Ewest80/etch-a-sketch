@@ -1,3 +1,8 @@
+const COLOR = 'COLOR';
+const RAINBOW = 'RAINBOW';
+const SHADE = 'SHADE';
+const ERASER = 'ERASER';
+
 const gridContainer = document.querySelector('.grid-container');
 const resizeButton = document.querySelector('#resizeBtn');
 const clearButton = document.querySelector('#clearBtn');
@@ -10,7 +15,7 @@ let color = '#333';
 let mouseDown = false;
 let colorMode = 'COLOR';
 
-// Create the grid
+
 function createGrid(gridSize) {
     // Clear grid and change css variable to new grid size
     clearGrid();
@@ -34,13 +39,13 @@ function clearGrid() {
 function changeColorMode(event) {
     if (event.type === 'mouseover' && !mouseDown) return;
 
-    if (colorMode === 'COLOR') {
+    if (colorMode === COLOR) {
         event.target.style.backgroundColor = color;
     }
-    else if (colorMode === 'RAINBOW') {
+    else if (colorMode === RAINBOW) {
         event.target.style.backgroundColor = getRandomColor();
     }
-    else if (colorMode === 'ERASER') {
+    else if (colorMode === ERASER) {
         event.target.style.backgroundColor = '';
     }
 }
@@ -68,7 +73,11 @@ resizeButton.addEventListener('click', () => {
     gridSize = newGridSize;
     createGrid(gridSize);
 });
-clearButton.addEventListener('click', () => createGrid(gridSize));
+
+clearButton.addEventListener('click', () => {
+    const gridItems = document.querySelectorAll('.grid-item');
+    gridItems.forEach(item => item.style.backgroundColor = '');
+});
 
 borderButton.addEventListener('click', () => {
     const gridItems = document.querySelectorAll('.grid-item');
@@ -83,16 +92,16 @@ drawToolsButtons.forEach(button => {
     button.addEventListener('click', (event) => {
         switch (event.target.id) {
             case 'colorBtn':
-                colorMode = 'COLOR';
+                colorMode = COLOR;
                 break;
             case 'rainbowBtn':
-                colorMode = 'RAINBOW';
+                colorMode = RAINBOW;
                 break;
             case 'shadeBtn':
-                colorMode = 'SHADE';
+                colorMode = SHADE;
                 break;
             case 'eraserBtn':
-                colorMode = 'ERASER';
+                colorMode = ERASER;
                 break;
         }
     })
