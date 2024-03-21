@@ -1,5 +1,7 @@
 const gridContainer = document.querySelector('.grid-container');
+const resizeButton = document.querySelector('#resizeBtn');
 const clearButton = document.querySelector('#clearBtn');
+const drawToolsButtons = document.querySelectorAll('.draw-tools btn');
 
 let gridSize = 24;
 let color = '#333';
@@ -17,8 +19,8 @@ function createGrid(gridSize) {
         const gridItem = document.createElement('div');
         gridItem.classList.add('grid-item');
 
-        gridItem.addEventListener('mouseover', changeColor);
-        gridItem.addEventListener('mousedown', changeColor);
+        gridItem.addEventListener('mouseover', changeColorMode);
+        gridItem.addEventListener('mousedown', changeColorMode);
 
         gridContainer.appendChild(gridItem);
     }
@@ -28,7 +30,7 @@ function clearGrid() {
     gridContainer.innerHTML = '';
 }
 
-function changeColor(event) {
+function changeColorMode(event) {
     if (event.type === 'mouseover' && !mouseDown) return;
 
     if (colorMode === 'COLOR') {
@@ -40,8 +42,18 @@ document.addEventListener('mousedown', (event) => {
     event.preventDefault();
     mouseDown = true;
 });
+
 document.addEventListener('mouseup', () => mouseDown = false);
 
+resizeButton.addEventListener('click', () => {
+    let newGridSize = +prompt('Enter a new grid size (1-100):', gridSize.toString());
+    if (!Number.isInteger(newGridSize) || newGridSize < 1 || newGridSize > 100) {
+        alert('Please enter a number between 1 and 100');
+        return;
+    }
+    gridSize = newGridSize;
+    createGrid(gridSize);
+});
 clearButton.addEventListener('click', () => createGrid(gridSize));
 
 createGrid(gridSize);
