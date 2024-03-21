@@ -3,7 +3,7 @@ const resizeButton = document.querySelector('#resizeBtn');
 const clearButton = document.querySelector('#clearBtn');
 const drawToolsButtons = document.querySelectorAll('.draw-tools .btn');
 
-let gridSize = 24;
+let gridSize = 16;
 let color = '#333';
 
 let mouseDown = false;
@@ -38,6 +38,9 @@ function changeColorMode(event) {
     }
     else if (colorMode === 'RAINBOW') {
         event.target.style.backgroundColor = getRandomColor();
+    }
+    else if (colorMode === 'ERASER') {
+        event.target.style.backgroundColor = '';
     }
 }
 
