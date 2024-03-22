@@ -90,7 +90,7 @@ resizeButton.addEventListener('click', () => {
         alert('Please enter a number between 1 and 100');
         return;
     }
-    if (newGridSize === gridSize) return;
+    if (parseInt(newGridSize) === gridSize) return;
 
     gridSize = newGridSize;
     gridItems = createGrid(gridSize);
