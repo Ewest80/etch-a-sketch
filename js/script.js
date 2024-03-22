@@ -106,10 +106,11 @@ clearButton.addEventListener('click', () => {
 
 borderButton.addEventListener('click', () => {
     const gridContainer = document.querySelector('.grid-container');
+    gridContainer.classList.toggle('grid-container-border');
+
     borderButton.classList.toggle('invert-btn');
     gridItems.forEach(item => {
         item.classList.toggle('grid-item-border');
-        gridContainer.classList.toggle('grid-container-border');
     })
 })
 
