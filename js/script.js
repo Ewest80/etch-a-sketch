@@ -22,6 +22,9 @@ function createGrid(gridSize) {
     clearGrid();
     document.documentElement.style.setProperty('--grid-size', gridSize);
 
+    // Remove inverted-btn class from border button when new grid is created
+    borderButton.classList.remove('invert-btn');
+
     const gridItems = [];
 
     for (let i = 0; i < gridSize * gridSize; i++) {
@@ -103,6 +106,7 @@ clearButton.addEventListener('click', () => {
 
 borderButton.addEventListener('click', () => {
     const gridContainer = document.querySelector('.grid-container');
+    borderButton.classList.toggle('invert-btn');
     gridItems.forEach(item => {
         item.classList.toggle('grid-item-border');
         gridContainer.classList.toggle('grid-container-border');
@@ -111,6 +115,10 @@ borderButton.addEventListener('click', () => {
 
 drawToolsButtons.forEach(button => {
     button.addEventListener('click', (event) => {
+        // Ensure inverted-btn is only on the currently selected button
+        drawToolsButtons.forEach(button => button.classList.remove('invert-btn'));
+        event.target.classList.add('invert-btn');
+
         switch (event.target.id) {
             case 'colorBtn':
                 colorMode = COLOR;
